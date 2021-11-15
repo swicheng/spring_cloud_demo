@@ -1,0 +1,21 @@
+#模拟两个EurekaServer
+#端口9000 ， 8000
+#两个Server需要相互注册
+
+server:
+  port: 9000 #端口
+
+spring:
+  application:
+    name: erueka-service
+
+#配置eureka server
+eureka:
+#  instance:
+#    hostname: localhost
+  client:
+#    register-with-eureka: false # 是否将自己注册到注册中心
+#    fetch-registry: false # 是否从eureka中获取注册信息
+    #配置暴露给Eureka Client的请求地址
+    service-url:
+      defaultZone: http://localhost:8000/eureka/

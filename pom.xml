@@ -11,6 +11,7 @@
     <modules>
         <module>product_service</module>
         <module>order_service</module>
+        <module>eureka_server</module>
     </modules>
 
     <parent>
@@ -44,12 +45,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.32</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.4.3</version>
         </dependency>
 
         <dependency>

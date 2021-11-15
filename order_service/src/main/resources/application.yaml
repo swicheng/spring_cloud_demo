@@ -23,6 +23,12 @@ mybatis-plus:
       id-type: auto
   type-aliases-package: classpath:cn.itcast.order.entity
 
-
+#配置Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9000/eureka/,http://localhost:8000/eureka/
+  instance:
+    prefer-ip-address: true #使用ip地址注册
 
 
