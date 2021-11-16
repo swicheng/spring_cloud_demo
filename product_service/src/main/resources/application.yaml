@@ -1,11 +1,11 @@
 server:
-  port: 8080
+  port: 8089
 
 
 #  配置数据库
 spring:
   application:
-    name: product_service
+    name: product-service
   datasource:
     password: 1234
     username: root
@@ -28,7 +28,8 @@ mybatis-plus:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9000/eureka/ , http://localhost:8000/eureka/ #多个eurekaserver之间用逗号隔开
+      defaultZone: http://localhost:9000/eureka/ # http://localhost:8000/eureka/ #多个eurekaserver之间用逗号隔开
   instance:
     prefer-ip-address: true #使用ip地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} #向注册中心中注册服务id
 

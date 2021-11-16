@@ -5,7 +5,7 @@ server:
 #  配置数据库
 spring:
   application:
-    name: order_service
+    name: order-service
   datasource:
     password: 1234
     username: root
@@ -27,8 +27,22 @@ mybatis-plus:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:9000/eureka/,http://localhost:8000/eureka/
+      defaultZone: http://localhost:9000/eureka/ #,http://localhost:8000/eureka/
   instance:
     prefer-ip-address: true #使用ip地址注册
+    lease-renewal-interval-in-seconds: 5 #向注册服务中心每个5秒发送一次提醒
+    lease-expiration-duration-in-seconds:  30 #续约到期时间
 
+# 修改ribbon的负载均衡策略  服务名 - ribbon - NFLoadBalancerRuleClassName
+  product-service:
+    ribbon:
+#      NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+     ConnectiTimeout: 250 # Ribbon的连接超时时间
+     ReadTimeout: 1000 #Ribbon的数据读取超时时间
+     OkToRetryOnAllOperation: true #是否对所有操作都进行重试
+     MaxAutoRetriesNextServer: 1 #切换实例的重试次数
+     MaxAutoRetries: 1 # 对当前实例的重试次数
 
+logging:
+  level:
+    root: debug
