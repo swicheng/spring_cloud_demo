@@ -3,13 +3,13 @@ package cn.itcast.order;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 
 @MapperScan("cn.itcast.order.mapper")
 @SpringBootApplication
-@EnableDiscoveryClient
-// 激活Feign
-public class OrderApplication {
+//激活hystrix
+@EnableCircuitBreaker
+public class OrderRestApplication {
 
 
     /**
@@ -21,9 +21,9 @@ public class OrderApplication {
 
     public static void main(String[] args) {
 
-        SpringApplication.run(OrderApplication.class,args);
+        SpringApplication.run(OrderRestApplication.class,args);
 
-        System.out.println("order_service 启动完毕....");
+        System.out.println("order_service_rest 启动完毕....");
 
     }
 

@@ -1,9 +1,10 @@
 package cn.itcast.order.entity;
 
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 
@@ -14,10 +15,10 @@ import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Accessors(chain = true)
-public class Product {
+@TableName("tb_product")
+public class Order {
 
-
+   @TableId
    private Long id;
 
    private String productName;

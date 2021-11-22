@@ -1,7 +1,8 @@
 package cn.itcast.order.controller;
 
+import cn.itcast.order.command.OrderCommand;
 import cn.itcast.order.entity.Product;
-import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
+import cn.itcast.order.service.OrderService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,10 @@ public class OrderController {
 
 
     @Resource
+    private OrderService orderService;
+
+
+    @Resource
     private RestTemplate restTemplate;
 
     /**
@@ -27,8 +32,7 @@ public class OrderController {
      *    调用方法获取服务的元数据信息
      */
 
-    @Resource
-    private EurekaDiscoveryClient discoveryClient;
+
 
 
     /**
@@ -40,11 +44,17 @@ public class OrderController {
     @GetMapping("/buy/{id}")
     public Product findById(@PathVariable Long id){
 
-
         // 根据元数据中的主机地址和端口号拼接请求微服务的URL
-       Product product = restTemplate.getForObject("http://product-service/product/1",Product.class);
+        //Product product = restTemplate.getForObject("http://product-service/product/1",Product.class);
 
-        return  product;
+
+        return new OrderCommand(restTemplate,id).execute() ;
+    }
+
+
+    @GetMapping("/user/{id}")
+    public String getById(@PathVariable String id){
+        return "多线程测试";
     }
 
     /**

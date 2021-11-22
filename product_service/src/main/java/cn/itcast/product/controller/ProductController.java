@@ -19,7 +19,6 @@ public class ProductController {
     @Resource
     private ProductService productService;
 
-
     @Value("${server.port}")
     private String port;
 
@@ -29,6 +28,11 @@ public class ProductController {
     @GetMapping("/{id}")
      public Product getproductById(@PathVariable Long id){
 
+//        try {
+//          //  Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
           Product product = productService.getById(id);
           product.setProductName("访问的服务的地址:"+ip+": "+port);
           return product;
