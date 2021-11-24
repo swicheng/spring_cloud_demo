@@ -1,7 +1,6 @@
 package cn.itcast.order.controller;
 
 import cn.itcast.order.entity.Product;
-import com.netflix.hystrix.contrib.javanica.annotation.DefaultProperties;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,7 +18,7 @@ import javax.annotation.Resource;
  *    如果在@DefaultPropeties指定了公共的降级方法
  *    在HystrixCommand不需要单独指定了
  */
-@DefaultProperties(defaultFallback = "defaultFallBack")
+//@DefaultProperties(defaultFallback = "defaultFallBack")
 public class OrderController {
 
 
@@ -35,10 +34,13 @@ public class OrderController {
      *     fallbackmethod：配置熔断之后的降级方法
      *
      */
-    @HystrixCommand()
+    @HystrixCommand(fallbackMethod = "orderFallBack")
     @GetMapping("/buy/{id}")
     public Product findById(@PathVariable Long id){
 
+        if(id != 1){
+            throw new RuntimeException("服务器运行异常");
+         }
 
         // 根据元数据中的主机地址和端口号拼接请求微服务的URL
        Product product = restTemplate.getForObject("http://product-service/product/1",Product.class);

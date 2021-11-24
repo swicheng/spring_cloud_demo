@@ -13,6 +13,8 @@
         <module>order_service</module>
         <module>eureka_server</module>
         <module>hystrix_turbine</module>
+        <module>kvm_service</module>
+        <module>quartz-service</module>
     </modules>
 
     <parent>
