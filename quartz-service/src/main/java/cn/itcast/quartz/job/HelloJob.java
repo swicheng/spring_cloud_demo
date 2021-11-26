@@ -5,12 +5,20 @@ import org.quartz.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+
+@PersistJobDataAfterExecution
 public class HelloJob implements Job {
 
    private String message;
 
+   private Integer count;
+
     public void  setMessage(String message){
      this.message = message;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     @Override
@@ -41,8 +49,11 @@ public class HelloJob implements Job {
         System.out.println("任务类的名称 "+context.getJobDetail().getJobClass().getName());
         System.out.println("当前时间： "+dateString);
 
+        ++count;
 
+        context.getJobDetail().getJobDataMap().put("count",count);
 
+        System.out.println(count);
     }
 
 }
