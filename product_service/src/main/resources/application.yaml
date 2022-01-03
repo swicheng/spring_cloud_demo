@@ -21,7 +21,7 @@ mybatis-plus:
   global-config:
     db-config:
       id-type: auto
-  type-aliases-package: classpath:cn.itcast.product.entity
+  type-aliases-package: classpath:cn.product.entity
 
 
 #配置Eureka
@@ -32,4 +32,3 @@ eureka:
   instance:
     prefer-ip-address: true #使用ip地址注册
     instance-id: ${spring.cloud.client.ip-address}:${server.port} #向注册中心中注册服务id
-

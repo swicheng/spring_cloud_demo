@@ -3,10 +3,7 @@ package cn.itcast.order.controller;
 import cn.itcast.order.command.OrderCommand;
 import cn.itcast.order.entity.Product;
 import cn.itcast.order.service.OrderService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
@@ -49,6 +46,13 @@ public class OrderController {
 
 
         return new OrderCommand(restTemplate,id).execute() ;
+    }
+
+
+    @PostMapping("/test")
+    public Object test(@RequestBody cn.itcast.order.entity.Resource resource){
+
+        return resource;
     }
 
 

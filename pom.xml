@@ -15,6 +15,7 @@
         <module>hystrix_turbine</module>
         <module>kvm_service</module>
         <module>quartz-service</module>
+        <module>zuul-server</module>
     </modules>
 
     <parent>

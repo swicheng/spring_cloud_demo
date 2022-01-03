@@ -19,6 +19,6 @@ public interface ProductFeignClient {
      *  配置需要调用的服务接口
      */
     @GetMapping("/product/{id}")
-    public Product findById(@PathVariable("id") Long id);
+    Product findById(@PathVariable("id") Long id);
 
 }

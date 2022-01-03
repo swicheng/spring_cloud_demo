@@ -1,2 +1,25 @@
 server:
-  port: 8081
+  port: 8090
+
+
+#  配置数据库
+spring:
+  application:
+    name: kvm-service
+  datasource:
+    password: 1234
+    username: root
+    url: jdbc:mysql://localhost:3306/hpu
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j.Log4jImpl
+    map-underscore-to-camel-case: true
+
+  global-config:
+    db-config:
+      id-type: auto
+  type-aliases-package: classpath:cn.itcast.entity
+
